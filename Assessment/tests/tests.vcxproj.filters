@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test_math.cpp">
+    <ClCompile Include="stl_hash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stl_hash.cpp">
+    <ClCompile Include="stl_algorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
