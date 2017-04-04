@@ -6,107 +6,107 @@
 class Car
 {
 protected:
-	std::string str_;
+    std::string str_;
 
 public:
-	Car(const std::string model = "Unknkown car")
-	{
-		str_ = model;
-	}
+    Car(const std::string model = "Unknkown car")
+    {
+        str_ = model;
+    }
 
-	virtual std::string getDescription()
-	{
-		return str_;
-	}
+    virtual std::string getDescription()
+    {
+        return str_;
+    }
 
-	virtual double getCost() = 0;
+    virtual double getCost() = 0;
 };
 
 class OptionsDecorator : public Car
 {
 private:
-	std::unique_ptr<Car> base_;
+    std::unique_ptr<Car> base_;
 
 public:
-	OptionsDecorator(std::unique_ptr<Car> c)
-	{
-		base_ = std::move(c);
-	}
-	virtual double getCost()
-	{
-		return base_->getCost();
-	}
+    OptionsDecorator(std::unique_ptr<Car> c)
+    {
+        base_ = std::move(c);
+    }
+    virtual double getCost()
+    {
+        return base_->getCost();
+    }
 
-	virtual std::string getDescription() override
-	{
-		return base_->getDescription();
-	}
+    virtual std::string getDescription() override
+    {
+        return base_->getDescription();
+    }
 };
 
 class RealCarModel : public Car
 {
 public:
-	RealCarModel()
-		: Car("RealCarModel")
-	{}
+    RealCarModel()
+        : Car("RealCarModel")
+    {}
 
-	virtual double getCost()
-	{
-		return 2000;
-	}
+    virtual double getCost()
+    {
+        return 2000;
+    }
 };
 
 class Navigation : public OptionsDecorator
 {
 public:
-	Navigation(std::unique_ptr<Car> c)
-		: OptionsDecorator(std::move(c))
-	{}
+    Navigation(std::unique_ptr<Car> c)
+        : OptionsDecorator(std::move(c))
+    {}
 
-	virtual std::string getDescription()
-	{
-		return OptionsDecorator::getDescription() + ", Navigation";
-	}
+    virtual std::string getDescription()
+    {
+        return OptionsDecorator::getDescription() + ", Navigation";
+    }
 
-	virtual double getCost()
-	{
-		return 30 + OptionsDecorator::getCost();
-	}
+    virtual double getCost()
+    {
+        return 30 + OptionsDecorator::getCost();
+    }
 };
 
 class HighSoundSystem : public OptionsDecorator
 {
 public:
-	HighSoundSystem(std::unique_ptr<Car> c)
-		: OptionsDecorator(std::move(c))
-	{}
+    HighSoundSystem(std::unique_ptr<Car> c)
+        : OptionsDecorator(std::move(c))
+    {}
 
-	virtual std::string getDescription()
-	{
-		return OptionsDecorator::getDescription() + ", HighSoundSystem";
-	}
+    virtual std::string getDescription()
+    {
+        return OptionsDecorator::getDescription() + ", HighSoundSystem";
+    }
 
-	virtual double getCost()
-	{
-		return 10 + OptionsDecorator::getCost();
-	}
+    virtual double getCost()
+    {
+        return 10 + OptionsDecorator::getCost();
+    }
 };
 
 
 TEST(DecoratorTest, DesignPatterns)
 {
-	std::unique_ptr<Car> realCar = std::make_unique<RealCarModel>();
+    std::unique_ptr<Car> realCar = std::make_unique<RealCarModel>();
 
-	EXPECT_EQ(realCar->getDescription(), "RealCarModel");
-	EXPECT_EQ(realCar->getCost(), 2000);
+    EXPECT_EQ(realCar->getDescription(), "RealCarModel");
+    EXPECT_EQ(realCar->getCost(), 2000);
 
-	std::unique_ptr<Car> carWithNavigation = std::make_unique<Navigation>(std::move(realCar));
+    std::unique_ptr<Car> carWithNavigation = std::make_unique<Navigation>(std::move(realCar));
 
-	EXPECT_EQ(carWithNavigation->getDescription(), "RealCarModel, Navigation");
-	EXPECT_EQ(carWithNavigation->getCost(), 2030);
+    EXPECT_EQ(carWithNavigation->getDescription(), "RealCarModel, Navigation");
+    EXPECT_EQ(carWithNavigation->getCost(), 2030);
 
-	std::unique_ptr<Car> carWithNavigationAndHighSound = std::make_unique<HighSoundSystem>(std::move(carWithNavigation));
+    std::unique_ptr<Car> carWithNavigationAndHighSound = std::make_unique<HighSoundSystem>(std::move(carWithNavigation));
 
-	EXPECT_EQ(carWithNavigationAndHighSound->getDescription(), "RealCarModel, Navigation, HighSoundSystem");
-	EXPECT_EQ(carWithNavigationAndHighSound->getCost(), 2040);
+    EXPECT_EQ(carWithNavigationAndHighSound->getDescription(), "RealCarModel, Navigation, HighSoundSystem");
+    EXPECT_EQ(carWithNavigationAndHighSound->getCost(), 2040);
 }
