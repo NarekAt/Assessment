@@ -157,6 +157,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Decorator.cpp" />
     <ClCompile Include="stl_algorithms.cpp" />
     <ClCompile Include="stl_hash.cpp" />
   </ItemGroup>
