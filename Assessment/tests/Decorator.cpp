@@ -20,17 +20,19 @@ public:
     }
 
     virtual double getCost() = 0;
+
+    virtual ~Car() = default;
 };
 
 class OptionsDecorator : public Car
 {
 private:
-    std::unique_ptr<Car> base_;
+    Car* base_;
 
 public:
-    OptionsDecorator(std::unique_ptr<Car> c)
+    OptionsDecorator(Car* c)
     {
-        base_ = std::move(c);
+        base_ = c;
     }
     virtual double getCost()
     {
@@ -59,8 +61,8 @@ public:
 class Navigation : public OptionsDecorator
 {
 public:
-    Navigation(std::unique_ptr<Car> c)
-        : OptionsDecorator(std::move(c))
+    Navigation(Car* c)
+        : OptionsDecorator(c)
     {}
 
     virtual std::string getDescription()
@@ -77,8 +79,8 @@ public:
 class HighSoundSystem : public OptionsDecorator
 {
 public:
-    HighSoundSystem(std::unique_ptr<Car> c)
-        : OptionsDecorator(std::move(c))
+    HighSoundSystem(Car* c)
+        : OptionsDecorator(c)
     {}
 
     virtual std::string getDescription()
@@ -100,12 +102,12 @@ TEST(DecoratorTest, DesignPatterns)
     EXPECT_EQ(realCar->getDescription(), "RealCarModel");
     EXPECT_EQ(realCar->getCost(), 2000);
 
-    std::unique_ptr<Car> carWithNavigation = std::make_unique<Navigation>(std::move(realCar));
+    std::unique_ptr<Car> carWithNavigation = std::make_unique<Navigation>(realCar.get());
 
     EXPECT_EQ(carWithNavigation->getDescription(), "RealCarModel, Navigation");
     EXPECT_EQ(carWithNavigation->getCost(), 2030);
 
-    std::unique_ptr<Car> carWithNavigationAndHighSound = std::make_unique<HighSoundSystem>(std::move(carWithNavigation));
+    std::unique_ptr<Car> carWithNavigationAndHighSound = std::make_unique<HighSoundSystem>(carWithNavigation.get());
 
     EXPECT_EQ(carWithNavigationAndHighSound->getDescription(), "RealCarModel, Navigation, HighSoundSystem");
     EXPECT_EQ(carWithNavigationAndHighSound->getCost(), 2040);
