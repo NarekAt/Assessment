@@ -64,13 +64,13 @@ public:
         this->current_ -= cnt;
     }
 
-    auto TotalAllocations()
+    auto totalAllocations() const
     { return this->total_; }
 
-    auto CurrentAllocations()
+    auto currentAllocations() const
     { return this->current_; }
 
-    auto PeakAllocations()
+    auto peakAllocations() const
     { return this->peak_; }
 
 private:

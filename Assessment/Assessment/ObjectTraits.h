@@ -4,7 +4,7 @@ namespace MemMgmt
 {
 
 template<typename T>
-class object_traits
+class ObjectTraits
 {
 public:
 
@@ -13,13 +13,13 @@ public:
     template<typename U>
     struct rebind
     {
-        typedef object_traits<U> other;
+        typedef ObjectTraits<U> other;
     };
 
-    object_traits() = default;
+    ObjectTraits() = default;
 
     template<typename U>
-    object_traits(object_traits<U> const& other) {}
+    ObjectTraits(ObjectTraits<U> const& other) {}
 
     // Address of object
     type*       address(type&       obj) const { return &obj; }
