@@ -7,7 +7,7 @@ namespace MemMgmt
 
 template<typename T,
          typename Policy = StandardAllocPolicy<T>,
-         typename Traits = object_traits<T>>
+         typename Traits = ObjectTraits<T>>
 class Allocator : public Policy, public Traits
 {
 private:

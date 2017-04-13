@@ -15,10 +15,10 @@ TEST(DebugAllocTest, MemoryManagement)
 
     std::cout << "Without reserved capacity" << std::endl;
     std::cout << "Capacity = " << v.capacity() << std::endl;
-    std::cout << "Total Allocations = " << v.get_allocator().TotalAllocations() << std::endl;
-    std::cout << "Peak Allocations = " << v.get_allocator().PeakAllocations() << std::endl;
+    std::cout << "Total Allocations = " << v.get_allocator().totalAllocations() << std::endl;
+    std::cout << "Peak Allocations = " << v.get_allocator().peakAllocations() << std::endl;
 
-    EXPECT_EQ(v.capacity(), v.get_allocator().CurrentAllocations());
+    EXPECT_EQ(v.capacity(), v.get_allocator().currentAllocations());
 
     v.clear();
 
@@ -31,8 +31,8 @@ TEST(DebugAllocTest, MemoryManagement)
     }
     std::cout << "With reserved capacity" << std::endl;
     std::cout << "Capacity = " << v2.capacity() << std::endl;
-    std::cout << "Total Allocations = " << v2.get_allocator().TotalAllocations() << std::endl;
-    std::cout << "Peak Allocations = " << v2.get_allocator().PeakAllocations() << std::endl;
+    std::cout << "Total Allocations = " << v2.get_allocator().totalAllocations() << std::endl;
+    std::cout << "Peak Allocations = " << v2.get_allocator().peakAllocations() << std::endl;
 
-    EXPECT_EQ(v.capacity(), v.get_allocator().CurrentAllocations());
+    EXPECT_EQ(v.capacity(), v.get_allocator().currentAllocations());
 }
