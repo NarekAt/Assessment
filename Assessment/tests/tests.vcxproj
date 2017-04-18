@@ -162,6 +162,7 @@
     <ClCompile Include="Decorator.cpp" />
     <ClCompile Include="stl_algorithms.cpp" />
     <ClCompile Include="stl_hash.cpp" />
+    <ClCompile Include="ThreadSafeQueueTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

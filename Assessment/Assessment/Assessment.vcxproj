@@ -154,6 +154,8 @@
     <ClInclude Include="DebugAllocPolicy.h" />
     <ClInclude Include="ObjectTraits.h" />
     <ClInclude Include="StandardAllocPolicy.h" />
+    <ClInclude Include="ThreadSafeQueue.h" />
+    <ClInclude Include="ThreadSafeQueue_Impl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
