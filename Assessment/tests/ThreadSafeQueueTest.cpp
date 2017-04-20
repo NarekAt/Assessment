@@ -41,7 +41,7 @@ TEST(QueueWriteTest, ParallelTests)
     EXPECT_EQ(q.size(), 980);
 }
 
-TEST(QueueReadWriteTest, ParallelTests)
+TEST(ParallelTests, QueueReadWriteTest)
 {
     QueueT q;
 

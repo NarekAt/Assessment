@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(IsSorted, STL_TEST)
+TEST(STL_TESTS, IsSorted)
 {
     std::vector<int> coll = { 1,2,3,3,5,78,99,102,333 };
 
@@ -16,7 +16,7 @@ TEST(IsSorted, STL_TEST)
     EXPECT_EQ(*firstUnsorted, 66);
 }
 
-TEST(PartitionCheck, STL_TEST)
+TEST(STL_TESTS, PartitionCheck)
 {
     std::vector<int> coll = { 5, 3, 9, 1, 3, 4, 8, 2, 6 };
 
@@ -32,7 +32,7 @@ TEST(PartitionCheck, STL_TEST)
     EXPECT_EQ(*pos, 4);
 }
 
-TEST(ContainerHeapCheck, STL_TEST)
+TEST(STL_TESTS, ContainerHeapCheck)
 {
     std::vector<int> coll1 = { 9, 8, 7, 7, 7, 5, 4, 2, 1 };
     std::vector<int> coll2 = { 5, 3, 2, 1, 4, 7, 9, 8, 6 };
@@ -41,7 +41,7 @@ TEST(ContainerHeapCheck, STL_TEST)
     EXPECT_FALSE(is_heap(coll2.cbegin(), coll2.cend()));
 }
 
-TEST(Permutations, STL_TEST)
+TEST(STL_TESTS, Permutations)
 {
     std::string s = "aba";
 
@@ -55,7 +55,7 @@ TEST(Permutations, STL_TEST)
     }
 }
 
-TEST(HeapAlgorithms, STL_TEST)
+TEST(STL_TESTS, HeapAlgorithms)
 {
     std::vector<int> coll = { 3, 4, 5, 6, 7, 5, 6, 7, 8, 9, 1, 2, 3, 4 };
     std::make_heap(coll.begin(), coll.end());

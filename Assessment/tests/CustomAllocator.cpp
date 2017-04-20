@@ -4,7 +4,7 @@
 
 using namespace MemMgmt;
 
-TEST(DebugAllocTest, MemoryManagement)
+TEST(MemoryManagement, DebugAllocTest)
 {
     std::vector<int, Allocator<int, DebugAllocPolicy<int>>> v;
 
