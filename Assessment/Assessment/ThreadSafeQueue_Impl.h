@@ -51,8 +51,7 @@ ThreadSafeQueue<T>::pop(value_type& v)
     v = dataQueue_.front();
     dataQueue_.pop();
 
-    if (!reachedToMax_ && dataQueue_.size() < maxSize_)
-        cVForProducers_.notify_all();
+    cVForProducers_.notify_all();
 }
 
 template<typename T>
