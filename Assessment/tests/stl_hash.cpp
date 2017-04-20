@@ -36,7 +36,7 @@ void printData(const T& cont)
     std::cout << std::endl;
 }
 
-TEST(HashBucketInterfaceTest, STL_TEST)
+TEST(STL_TESTS, HashBucketInterfaceTest)
 {
     EXPECT_EQ(intset.size(), 9);
     EXPECT_EQ(intset.bucket_count(), 64);
@@ -48,7 +48,7 @@ TEST(HashBucketInterfaceTest, STL_TEST)
     printData(intset);
 }
 
-TEST(HashBucketInterfaceTest2, STL_TEST)
+TEST(STL_TESTS, HashBucketInterfaceTest2)
 {
     intset.insert({ -7,18,33,4 });
 

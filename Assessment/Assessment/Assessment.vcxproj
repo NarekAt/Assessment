@@ -151,9 +151,16 @@
   <ItemGroup>
     <ClInclude Include="Allocator.h" />
     <ClInclude Include="AllocatorTraits.h" />
+    <ClInclude Include="AtomicFenseBasedLocking.h" />
+    <ClInclude Include="AtomicSpinLock.h" />
     <ClInclude Include="DebugAllocPolicy.h" />
+    <ClInclude Include="LockingStrategy.h" />
+    <ClInclude Include="MutexBasedLocking.h" />
     <ClInclude Include="ObjectTraits.h" />
     <ClInclude Include="StandardAllocPolicy.h" />
+    <ClInclude Include="ThreadSafeCounter.h" />
+    <ClInclude Include="ThreadSafeQueue.h" />
+    <ClInclude Include="ThreadSafeQueue_Impl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

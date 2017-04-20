@@ -82,7 +82,7 @@ private:
 };
 
 // Client:
-TEST(CommandTest, DesignPatterns)
+TEST(DesignPatterns, CommandTest)
 {
     // create concrete commands and set their receirvers
     Light l;

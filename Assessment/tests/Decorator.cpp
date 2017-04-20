@@ -95,7 +95,7 @@ public:
 };
 
 
-TEST(DecoratorTest, DesignPatterns)
+TEST(DesignPatterns, DecoratorTest)
 {
     std::unique_ptr<Car> realCar = std::make_unique<RealCarModel>();
 
